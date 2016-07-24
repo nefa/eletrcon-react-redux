@@ -32,6 +32,8 @@ class Counter extends Component {
           </button>
           <button className={styles.btn} onClick={incrementIfOdd}>odd</button>
           <button className={styles.btn} onClick={() => incrementAsync()}>async</button>
+
+          <button className={styles.btn} >added later</button>
         </div>
       </div>
     );
