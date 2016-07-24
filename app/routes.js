@@ -10,6 +10,6 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="/counter" component={CounterPage} />
-    <Route path="/list" component={ArticlesPage} />
+    <Route path="/articleList" component={ArticlesPage} />
   </Route>
 );

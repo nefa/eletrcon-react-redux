@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import List from '../components/lis-viewController';
+import List from '../components/list-viewController';
 import * as articleListActions from '../actions/list-actions';
 
 
