@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import FormCpt from './article-form';
 
 export default class ListVCtrl extends Component {
 
@@ -36,7 +36,8 @@ export default class ListVCtrl extends Component {
       {value: 'No Rights Reserved', label: 'No Rights Reserved'}
     ]
 
-    return <div>
+    return <MuiThemeProvider>
+    <div>
       <h4>this is where the larticle ist will be</h4>
     
       <button onClick={showMock}>show mock list</button>
@@ -45,7 +46,9 @@ export default class ListVCtrl extends Component {
         : null
       )}
 
-      <div className="form">
+      <FormCpt />
+
+{/*      <div className="form">
         title: <input type="text" ref="articleTitle"/>
         <br />
         author: <input type="text" ref="author"/>
@@ -62,8 +65,9 @@ export default class ListVCtrl extends Component {
         <button onClick={e => this.addNewArticle()}>
                 add item
         </button>
-      </div>
-    </div>
+      </div>*/}
+    </div>  
+    </MuiThemeProvider>
   }
 
 }
