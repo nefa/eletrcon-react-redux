@@ -2,6 +2,10 @@ import React, {Component, PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import RaisedButton from 'material-ui/RaisedButton';
+injectTapEventPlugin();
+  
 
 const copyrightOptions = [
   {value: 'All Rights Reserved', label: 'All Rights Reserved'},
@@ -25,21 +29,41 @@ export default class FormCpt extends Component {
   }
 
   changeAuthor(evt) {
-    this.setState({author: evt.target.value})
+    this.setState({author: evt.target.value});
   }
 
-  changeCopyright(evt) {
-    this.setState({copyright: evt.target.value})
+  changeTitle(evt) {
+    this.setState({title: evt.target.value});
+  }
+
+  changeCopyright(evt, index, value) {
+    this.setState({copyright: value});
+  }
+
+  handleSubmit(evt) {
+    evt.preventDefault()
+
+    this.props.handleSubmit(this.state);
+
   }
 
   render() {
     console.log(this.state)
-    return <form>
+    const buttonStyle = {
+      margin: 12
+    }
+    return <form onSubmit={this.handleSubmit.bind(this)}>
       
       <TextField name="author" 
         hintText="Author Name"
         value={this.state.author}
         onChange={this.changeAuthor.bind(this)}/>
+      <br />
+
+      <TextField name="articleTitle" 
+        hintText="Title"
+        value={this.state.title}
+        onChange={this.changeTitle.bind(this)}/>
       <br />
         
       <TextField name="content"
@@ -55,9 +79,11 @@ export default class FormCpt extends Component {
 
         {copyrightOptions.map((item, idx) => <MenuItem 
           key={idx}
-          value={idx} primaryText={item.value}/>)}        
+          value={item.value} primaryText={item.label}/>)}        
       
-      </SelectField>            
+      </SelectField> 
+      <br />
+      <RaisedButton type="submit" label="Send" style={buttonStyle} />
 
     </form>
   }

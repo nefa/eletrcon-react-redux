@@ -12,30 +12,21 @@ export default class ListVCtrl extends Component {
     this.copyright = "";
   }
 
-  addNewArticle() {
-    console.log(this.refs.articleTitle.value)
+  addNewArticle({title, author, copyright, content}) {
+    console.log(title, copyright);
+
     this.props.addArticle({
-      title: this.refs.articleTitle.value,
-      author: this.refs.author.value,
-      copyright: this.copyright, 
+      title,
+      author,
+      copyright, 
       id: ++this.articleId,
       date: new Date()
     });
   }
 
-  copyrightChange(c) {
-    console.log(c)
-    this.copyright = c.value;
-  }
-
   render() {
     const { list, showMock, addArticle } = this.props;
-    const copyrightOptions = [
-      {value: 'All Rights Reserved', label: 'All Rights Reserved'},
-      {value: 'Some Rights Reserved', label: 'Some Rights Reserved'},
-      {value: 'No Rights Reserved', label: 'No Rights Reserved'}
-    ]
-
+    
     return <MuiThemeProvider>
     <div>
       <h4>this is where the larticle ist will be</h4>
@@ -46,26 +37,8 @@ export default class ListVCtrl extends Component {
         : null
       )}
 
-      <FormCpt />
+      <FormCpt handleSubmit={this.addNewArticle.bind(this)}/>
 
-{/*      <div className="form">
-        title: <input type="text" ref="articleTitle"/>
-        <br />
-        author: <input type="text" ref="author"/>
-        <br />
-        content: <textarea></textarea>
-        <br />
-        licence: 
-        <Select name="slect-field"
-          value={copyrightOptions[0].value}
-          options={copyrightOptions}
-          onChange={this.copyrightChange.bind(this)}
-          />
-        <br /> 
-        <button onClick={e => this.addNewArticle()}>
-                add item
-        </button>
-      </div>*/}
     </div>  
     </MuiThemeProvider>
   }
