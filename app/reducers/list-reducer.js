@@ -1,6 +1,6 @@
 import { SHOW_MOCK , ADD_ART } from '../actions/list-actions';
 
-export default function list(state= [], action) {
+export default function listReducer(state= [], action) {
   console.log("...list reducer invoked")
   if (action.type == SHOW_MOCK) 
     return [{title: 'test', id: 0}]

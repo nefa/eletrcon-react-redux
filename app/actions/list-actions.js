@@ -8,7 +8,7 @@ export function showMock() {
 }
 
 export function addArticle(item) {
-  console.log('addArticle action has been used', item);
+  console.log(item);
   return {
     type: ADD_ART,
     payload: item

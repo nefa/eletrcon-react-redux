@@ -5,8 +5,9 @@ import * as articleListActions from '../actions/list-actions';
 
 
 function mapStateToProps(state) {
+  console.log("...mapped ", state);
   return {
-    list: state.list
+    list: state.listReducer
   }
 }
 
