@@ -8,9 +8,15 @@ import ArticleCardCpt from './article';
 
 export default class ListVCtrl extends Component {
 
+  constructor(props) {
+    super(props);
+    this.articleId = 0;
+  }
+
+
   componentDidMount() {
     /*ask for localStore */
-    /*then dispatch all or one by one...*/
+    this.props.getAllArticles();
   }
 
 
@@ -21,7 +27,7 @@ export default class ListVCtrl extends Component {
       copyright,
       content, 
       id: ++this.articleId,
-      date: new Date()
+      date: new Date().toString()
     });
   }
 
