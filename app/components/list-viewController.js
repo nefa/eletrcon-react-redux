@@ -31,7 +31,7 @@ export default class ListVCtrl extends Component {
   }
 
   render() {
-    const { list, showMock, addArticle } = this.props;    
+    const { list, showMock, addArticle, deleteArticle } = this.props;    
     console.log(...this.props)
     return (
       <MuiThemeProvider>
@@ -41,7 +41,8 @@ export default class ListVCtrl extends Component {
           {/*<button onClick={showMock}>show mock list</button>*/}
           {list.map(item => item 
             ? <ArticleCardCpt 
-                key={item.id}  {...item} />
+                key={item.id}  delete={deleteArticle.bind(this, item.id)} 
+                {...item} />
             : null
           )}
 

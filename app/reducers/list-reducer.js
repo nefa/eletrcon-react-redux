@@ -1,4 +1,4 @@
-import { SHOW_MOCK , ADD_ART, GET_ALL } from '../actions/list-actions';
+import { SHOW_MOCK , ADD_ART, GET_ALL, DEL_ART } from '../actions/list-actions';
 
 function getLocalStorage() {
   const state = [];
@@ -9,15 +9,22 @@ function getLocalStorage() {
 }
 
 
-export default function listReducer(state= [], action) {
+export default function listReducer(state=[], action) {
 
   if (action.type == SHOW_MOCK) return [{title: 'test', id: 0}];
   if (action.type == ADD_ART) {
-    console.log(action.payload.id, action.payload);
+    //?? asynch
     localStorage.setItem(action.payload.id, JSON.stringify(action.payload));
     /* return all local storage items...*/
     return getLocalStorage();
   }
+
+  if (action.type == DEL_ART) {
+    localStorage.removeItem(action.payload); //??asynch
+    /* return all remaining localstorage items*/
+    return getLocalStorage();
+  }
+  
   if (action.type == GET_ALL) return getLocalStorage();
 
   return state;
