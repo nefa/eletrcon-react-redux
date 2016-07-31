@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import uuid from 'node-uuid'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 import FormCpt from './article-form';
 import ArticleCardCpt from './article';
@@ -10,15 +12,12 @@ export default class ListVCtrl extends Component {
 
   constructor(props) {
     super(props);
-    this.articleId = 0;
   }
-
 
   componentDidMount() {
     /*ask for localStore */
     this.props.getAllArticles();
   }
-
 
   addNewArticle({title, author, copyright, content}) {
     this.props.addArticle({
@@ -26,7 +25,7 @@ export default class ListVCtrl extends Component {
       author,
       copyright,
       content, 
-      id: ++this.articleId,
+      id: uuid.v1(),
       date: new Date().toString()
     });
   }
