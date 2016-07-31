@@ -13,15 +13,20 @@ const copyrightOptions = [
   {value: 'No Rights Reserved', label: 'No Rights Reserved'}
 ];
 
+function getInitialState() {
+  return {
+    author: '',
+    title: '',
+    content: '',
+    copyright: copyrightOptions[0].value
+   }; 
+};
+
 export default class FormCpt extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      author: '',
-      content: '',
-      copyright: copyrightOptions[0].value
-    }
+    this.state = getInitialState();
   }
 
   changeContent(evt) {
@@ -42,8 +47,8 @@ export default class FormCpt extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-
     this.props.handleSubmit(this.state);
+    this.setState(getInitialState());
 
   }
 
