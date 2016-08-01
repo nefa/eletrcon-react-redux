@@ -3,7 +3,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-const ArticleCardCpt = ({id, date, author, title, content, copyright, delete}) => (
+const ArticleCardCpt = ({author, date, content, title, copyright, id, onDelete}) => (
   <Card>
     <CardHeader
       title={title}
@@ -14,11 +14,11 @@ const ArticleCardCpt = ({id, date, author, title, content, copyright, delete}) =
     <CardText expandable={true}>{content}</CardText>
 
     <RaisedButton label="DELETE"
-      backgroundColor="red"  />  
+      backgroundColor="red"  
+      onClick={onDelete.bind(this)} />  
     
     <p>{copyright}</p>
-  </Card>
-);
+  </Card>);
 
 export default ArticleCardCpt;
 

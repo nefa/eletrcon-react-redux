@@ -1,11 +1,11 @@
 import { SHOW_MOCK , ADD_ART, GET_ALL, DEL_ART } from '../actions/list-actions';
 
 function getLocalStorage() {
-  const state = [];
+  const storageState = [];
   for(let key in localStorage) {
-    state.push(JSON.parse(localStorage.getItem(key)));
+    storageState.push(JSON.parse(localStorage.getItem(key)));
   }
-  return state;
+  return storageState;
 }
 
 
@@ -21,10 +21,9 @@ export default function listReducer(state=[], action) {
 
   if (action.type == DEL_ART) {
     localStorage.removeItem(action.payload); //??asynch
-    /* return all remaining localstorage items*/
     return getLocalStorage();
   }
-  
+
   if (action.type == GET_ALL) return getLocalStorage();
 
   return state;
