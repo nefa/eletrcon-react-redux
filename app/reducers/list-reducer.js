@@ -1,30 +1,24 @@
 import { SHOW_MOCK , ADD_ART, GET_ALL, DEL_ART } from '../actions/list-actions';
+import storeService from './localstorage-service'; 
 
-function getLocalStorage() {
-  const storageState = [];
-  for(let key in localStorage) {
-    storageState.push(JSON.parse(localStorage.getItem(key)));
-  }
-  return storageState;
-}
+
+console.log(storeService);
+console.log(storeService.getAll);
 
 
 export default function listReducer(state=[], action) {
 
-  if (action.type == SHOW_MOCK) return [{title: 'test', id: 0}];
   if (action.type == ADD_ART) {
-    //?? asynch
-    localStorage.setItem(action.payload.id, JSON.stringify(action.payload));
-    /* return all local storage items...*/
-    return getLocalStorage();
+    storeService.article = action.payload;
+    return storeService.getAll;
   }
 
   if (action.type == DEL_ART) {
-    localStorage.removeItem(action.payload); //??asynch
-    return getLocalStorage();
+    storeService.removeItem(action.payload); //??asynch
+    return storeService.getAll;
   }
 
-  if (action.type == GET_ALL) return getLocalStorage();
+  if (action.type == GET_ALL) return storeService.getAll;
 
   return state;
 }

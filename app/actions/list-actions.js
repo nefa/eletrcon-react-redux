@@ -4,12 +4,7 @@ export const GET_ALL = 'GET_ALL_ARTICLES';
 export const DEL_ART = 'DELETE_ARTICLE';
 
 
-export function showMock() {
-  return {type: SHOW_MOCK};
-}
-
 export function addArticle(item) {
-  console.log(item);
   return {
     type: ADD_ART,
     payload: item

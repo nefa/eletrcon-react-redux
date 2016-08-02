@@ -25,7 +25,7 @@ export default class ListVCtrl extends Component {
       author,
       copyright,
       content, 
-      id: uuid.v1(),
+      id: uuid.v1(), /*generated on server/backend*/
       date: new Date().toString()
     });
   }
@@ -35,9 +35,8 @@ export default class ListVCtrl extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <h4>this is where the larticle ist will be</h4>
+          <h4>Rendering articles....</h4>
         
-          {/*<button onClick={showMock}>show mock list</button>*/}
           {list.map(item => item 
             ? <ArticleCardCpt 
                 key={item.id}  
