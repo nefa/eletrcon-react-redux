@@ -1,22 +1,28 @@
+/*this is a basic stripped class that should be replaced once a
+real adaptor to a particluar storage is adopted*/
+
 class StoreService {
   constructor(/*custom local service*/storage) {
+    /*this particular approach polutes the localStorage namespace,
+    so this is an unscalable, unrealistic approach to a storage
+    service*/
     this._storage = storage;
   }
 
-  get getAll() {
+  getAllArticles() {
     /* get all elements*/
     return Object
       .keys(this._storage)
       .map(key => JSON.parse(this._storage.getItem(key)))
   }
 
-  get article() { }
+  getArticle(/*id base*/ id) { }
 
   set article(article) {
     this._storage.setItem(article.id, article);
   }
 
-  removeItem(id) {
+  removeArticle(id) {
     this._storage.removeItem(id)
   }
 }
