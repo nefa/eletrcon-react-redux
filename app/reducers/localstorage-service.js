@@ -16,10 +16,10 @@ class StoreService {
       .map(key => JSON.parse(this._storage.getItem(key)))
   }
 
-  getArticle(/*id base*/ id) { }
+  getArticle(id) { }
 
   set article(article) {
-    this._storage.setItem(article.id, article);
+    this._storage.setItem(article.id, JSON.stringify(article));
   }
 
   removeArticle(id) {
