@@ -1,7 +1,9 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import Chip from 'material-ui/Chip';
 
+const chip = {margin: 4}
 
 const ArticleCardCpt = ({author, date, content, title, copyright, id, onDelete}) => (
   <Card>
@@ -17,7 +19,8 @@ const ArticleCardCpt = ({author, date, content, title, copyright, id, onDelete})
       backgroundColor="red"  
       onClick={onDelete.bind(this)} />  
     
-    <p>{copyright}</p>
+    <br />
+    <Chip style={chip}>{copyright}</Chip>
   </Card>);
 
 export default ArticleCardCpt;

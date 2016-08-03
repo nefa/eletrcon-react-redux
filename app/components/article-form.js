@@ -58,7 +58,8 @@ export default class FormCpt extends Component {
       margin: 12
     }
     return <form onSubmit={this.handleSubmit.bind(this)}>
-      
+      <h4>Add new article: </h4>
+      <fieldset>
       <TextField name="author" 
         hintText="Author Name"
         value={this.state.author}
@@ -89,7 +90,7 @@ export default class FormCpt extends Component {
       </SelectField> 
       <br />
       <RaisedButton type="submit" label="Send" style={buttonStyle} />
-
+      </fieldset>
     </form>
   }
 }
