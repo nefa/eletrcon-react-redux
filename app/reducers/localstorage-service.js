@@ -68,17 +68,21 @@ class StorageService {
     this.synchronize();
   }
 
-  editItem(id, itemObj) {
+  editItem(itemObj) {
     this._data = this._data
-      .filter(item => item.id != id);
+      .filter(item => item.id != itemObj.id);
       .push(itemObj);
     this.synchronize();  
   }
 }
 
+class ArticleService extends StorageService {
+  constructor(namespace) {
+    super(namespace);
+  }
+}
 
-
-
+export new ArticleService('articles');
 
 
 
