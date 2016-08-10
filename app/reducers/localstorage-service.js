@@ -39,7 +39,6 @@ class StorageService {
     
     //load data form localstorage
     var data = JSON.parse(STORAGE.getItem(this._ns));
-    
     // set public _data on service state  
     this._data = !!data ? data : []; 
     /*synch with storage*/
@@ -58,8 +57,8 @@ class StorageService {
     return this._data;
   }
 
-  setItem(item) {
-    this._data.push(item);
+  addItem(item) {
+    this._data = this._data.concat([item]);
     this.synchronize();
   }
 
@@ -70,7 +69,7 @@ class StorageService {
 
   editItem(itemObj) {
     this._data = this._data
-      .filter(item => item.id != itemObj.id);
+      .filter(item => item.id != itemObj.id)
       .push(itemObj);
     this.synchronize();  
   }
@@ -82,7 +81,7 @@ class ArticleService extends StorageService {
   }
 }
 
-export new ArticleService('articles');
+export const articleService = new ArticleService('articles');
 
 
 

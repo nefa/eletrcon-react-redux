@@ -16,6 +16,7 @@ export default class ListVCtrl extends Component {
 
   componentDidMount() {
     /*ask for localStore */
+    console.log(this.props)
     this.props.getAllArticles();
   }
 
@@ -30,20 +31,28 @@ export default class ListVCtrl extends Component {
     });
   }
 
+  renderArticleList() {
+    const { list, deleteArticle } = this.props
+    if (list && list.length) {
+      return list.map(item => item 
+        ? <ArticleCardCpt 
+            key={item.id}  
+            onDelete={deleteArticle.bind(this, item.id)} 
+            {...item} />
+        : null)
+    
+    } else {
+      return <span>...loading</span>
+    }
+  }
+
   render() {
-    const { list, showMock, addArticle, deleteArticle } = this.props;    
     return (
       <MuiThemeProvider>
         <div>
           <h4>Rendering articles....</h4>
-        
-          {list.map(item => item 
-            ? <ArticleCardCpt 
-                key={item.id}  
-                onDelete={deleteArticle.bind(this, item.id)} 
-                {...item} />
-            : null
-          )}
+          
+          {this.renderArticleList()}
 
           <FormCpt handleSubmit={this.addNewArticle.bind(this)}/>
 

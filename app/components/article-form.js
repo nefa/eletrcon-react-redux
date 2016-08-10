@@ -53,7 +53,6 @@ export default class FormCpt extends Component {
   }
 
   render() {
-    console.log(this.state)
     const buttonStyle = {
       margin: 12
     }
