@@ -42,7 +42,7 @@ export default class ListVCtrl extends Component {
         : null)
     
     } else {
-      return <span>...loading</span>
+      return <span>----replace with article list----</span>
     }
   }
 
